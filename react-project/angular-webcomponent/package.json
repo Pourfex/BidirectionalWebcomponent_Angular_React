@@ -1,0 +1,27 @@
+{
+  "name": "angular-webcomponent",
+  "version": "1.0.0",
+  "description": "Angular Web Component for React Project",
+  "scripts": {
+    "build": "ng build --output-hashing=none && npm run bundle",
+    "bundle": "cat dist/angular-webcomponent/runtime.js dist/angular-webcomponent/polyfills.js dist/angular-webcomponent/main.js > ../public/angular-webcomponent.js"
+  },
+  "dependencies": {
+    "@angular/common": "^17.0.0",
+    "@angular/compiler": "^17.0.0",
+    "@angular/core": "^17.0.0",
+    "@angular/elements": "^17.0.0",
+    "@angular/platform-browser": "^17.0.0",
+    "@angular/platform-browser-dynamic": "^17.0.0",
+    "rxjs": "~7.8.0",
+    "tslib": "^2.3.0",
+    "zone.js": "~0.14.2"
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "^17.0.0",
+    "@angular/cli": "^17.0.0",
+    "@angular/compiler-cli": "^17.0.0",
+    "typescript": "~5.2.2"
+  }
+}
+
