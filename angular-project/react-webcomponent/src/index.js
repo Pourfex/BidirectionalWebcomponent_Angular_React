@@ -21,10 +21,25 @@ class ReactGreetingElement extends HTMLElement {
     }
   }
 
+  handleSendImage(imageData) {
+    // Emit a custom event with the image data
+    const event = new CustomEvent('image-sent', {
+      detail: { imageUrl: imageData },
+      bubbles: true,
+      composed: true
+    });
+    this.dispatchEvent(event);
+  }
+
   render() {
     if (this._root) {
       const message = this.getAttribute('message');
-      this._root.render(<ReactGreeting message={message} />);
+      this._root.render(
+        <ReactGreeting 
+          message={message} 
+          onSendImage={(imageData) => this.handleSendImage(imageData)}
+        />
+      );
     }
   }
 }

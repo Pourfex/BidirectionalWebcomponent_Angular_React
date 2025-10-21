@@ -69,12 +69,19 @@ The application will be available at `http://localhost:4200`
 
 ## Communication Between Frameworks
 
-This template demonstrates how to pass data from the Angular app to the React web component:
+This template demonstrates **bi-directional communication** between Angular and the React web component:
 
-1. **Input Field in Angular**: Type a message in the input field
-2. **Property Binding**: Angular uses `[attr.message]="messageToWebComponent"` to bind the value to the web component's attribute
-3. **Web Component Receives**: The React web component watches for attribute changes using `observedAttributes` and `attributeChangedCallback`
-4. **Real-time Update**: The message appears instantly in the React web component
+### 1. Parent to Web Component (Angular → React)
+- **Input Field in Angular**: Type a message in the input field
+- **Property Binding**: Angular uses `[attr.message]="messageToWebComponent"` to bind the value to the web component's attribute
+- **Web Component Receives**: The React web component watches for attribute changes using `observedAttributes` and `attributeChangedCallback`
+- **Real-time Update**: The message appears instantly in the React web component
+
+### 2. Web Component to Parent (React → Angular)
+- **Button in Web Component**: Click "Send to Main App" button in the React web component
+- **Custom Event**: The web component emits a custom event `image-sent` with the image data
+- **Event Listener**: Angular listens for the event using `(image-sent)="onImageReceived($event)"`
+- **Display in Parent**: The image is received and displayed in the main Angular application
 
 ## Learning Points
 
@@ -83,6 +90,10 @@ This template demonstrates:
 - Using custom elements in Angular
 - Cross-framework integration
 - Modern web component standards
-- Passing data from parent to web component using attributes
-- Observing attribute changes in web components
+- **Passing data from parent to web component** using attributes
+- **Observing attribute changes** in web components
+- **Emitting custom events** from web components
+- **Listening to custom events** in the parent application
+- **Bi-directional communication** between frameworks
+- Handling images and assets in web components
 

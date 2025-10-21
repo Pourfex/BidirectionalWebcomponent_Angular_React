@@ -25,11 +25,19 @@ import { FormsModule } from '@angular/forms';
             style="width: 100%; padding: 10px; font-size: 14px; border: 2px solid #ddd; border-radius: 4px;"
           />
         </div>
+
+        <div *ngIf="receivedImageUrl" style="margin-top: 20px; padding: 15px; background-color: #f0f0f0; border-radius: 8px;">
+          <h3 style="margin-top: 0;">Image sent from WebComponent</h3>
+          <img [src]="receivedImageUrl" alt="Received from web component" style="width: 150px; height: auto; border-radius: 8px;" />
+        </div>
       </div>
       
       <div class="card">
         <h2>React Web Component Demo</h2>
-        <react-greeting [attr.message]="messageToWebComponent"></react-greeting>
+        <react-greeting 
+          [attr.message]="messageToWebComponent"
+          (image-sent)="onImageReceived($event)"
+        ></react-greeting>
       </div>
     </div>
   `,
@@ -37,5 +45,10 @@ import { FormsModule } from '@angular/forms';
 })
 export class AppComponent {
   messageToWebComponent = '';
+  receivedImageUrl = '';
+
+  onImageReceived(event: any) {
+    this.receivedImageUrl = event.detail.imageUrl;
+  }
 }
 

@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 
 function App() {
   const [message, setMessage] = useState('');
+  const [receivedImageUrl, setReceivedImageUrl] = useState('');
   const webComponentRef = useRef(null);
 
   useEffect(() => {
@@ -9,6 +10,23 @@ function App() {
       webComponentRef.current.setAttribute('message', message);
     }
   }, [message]);
+
+  useEffect(() => {
+    const handleImageSent = (event) => {
+      setReceivedImageUrl(event.detail);
+    };
+
+    const element = webComponentRef.current;
+    if (element) {
+      element.addEventListener('imageSent', handleImageSent);
+    }
+
+    return () => {
+      if (element) {
+        element.removeEventListener('imageSent', handleImageSent);
+      }
+    };
+  }, []);
 
   return (
     <div className="container">
@@ -36,6 +54,17 @@ function App() {
             }}
           />
         </div>
+
+        {receivedImageUrl && (
+          <div style={{ marginTop: '20px', padding: '15px', backgroundColor: '#f0f0f0', borderRadius: '8px' }}>
+            <h3 style={{ marginTop: 0 }}>Image sent from WebComponent</h3>
+            <img 
+              src={receivedImageUrl} 
+              alt="Received from web component" 
+              style={{ width: '150px', height: 'auto', borderRadius: '8px' }} 
+            />
+          </div>
+        )}
       </div>
       
       <div className="card">

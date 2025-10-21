@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "description": "Angular Web Component for React Project",
   "scripts": {
-    "build": "ng build --output-hashing=none && npm run bundle",
-    "bundle": "cat dist/angular-webcomponent/runtime.js dist/angular-webcomponent/polyfills.js dist/angular-webcomponent/main.js > ../public/angular-webcomponent.js"
+    "build": "ng build --output-hashing=none && npm run bundle && npm run copy-assets",
+    "bundle": "cat dist/angular-webcomponent/runtime.js dist/angular-webcomponent/polyfills.js dist/angular-webcomponent/main.js > ../public/angular-webcomponent.js",
+    "copy-assets": "cp -r dist/angular-webcomponent/assets ../public/ || true"
   },
   "dependencies": {
     "@angular/common": "^17.0.0",

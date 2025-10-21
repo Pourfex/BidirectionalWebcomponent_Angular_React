@@ -74,12 +74,19 @@ The application will be available at `http://localhost:3000`
 
 ## Communication Between Frameworks
 
-This template demonstrates how to pass data from the React app to the Angular web component:
+This template demonstrates **bi-directional communication** between React and the Angular web component:
 
-1. **Input Field in React**: Type a message in the input field using React state
-2. **Property Binding**: React uses a `ref` and `useEffect` to set the attribute on the web component when state changes
-3. **Web Component Receives**: Angular Elements automatically exposes `@Input()` properties as attributes
-4. **Real-time Update**: The message appears instantly in the Angular web component
+### 1. Parent to Web Component (React → Angular)
+- **Input Field in React**: Type a message in the input field using React state
+- **Property Binding**: React uses a `ref` and `useEffect` to set the attribute on the web component when state changes
+- **Web Component Receives**: Angular Elements automatically exposes `@Input()` properties as attributes
+- **Real-time Update**: The message appears instantly in the Angular web component
+
+### 2. Web Component to Parent (Angular → React)
+- **Button in Web Component**: Click "Send to Main App" button in the Angular web component
+- **Custom Event**: The web component emits a custom event `imageSent` with the image path
+- **Event Listener**: React listens for the event using `addEventListener` in a `useEffect` hook
+- **Display in Parent**: The image is received and displayed in the main React application
 
 ## Learning Points
 
@@ -89,6 +96,10 @@ This template demonstrates:
 - Cross-framework integration
 - Modern web component standards
 - Angular standalone components
-- Passing data from parent to web component using attributes and refs
-- Angular @Input() decorator for web component properties
+- **Passing data from parent to web component** using attributes and refs
+- Angular `@Input()` decorator for web component properties
+- **Angular `@Output()` and EventEmitter** for emitting custom events
+- **Listening to custom events** in React using `addEventListener`
+- **Bi-directional communication** between frameworks
+- Handling images and assets in Angular web components
 

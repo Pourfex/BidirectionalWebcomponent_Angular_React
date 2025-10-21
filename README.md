@@ -48,8 +48,11 @@ These templates demonstrate:
 - ✅ Creating custom elements from Angular using Angular Elements
 - ✅ Best practices for framework-agnostic components
 - ✅ Build configuration for web components
-- ✅ **Communication from parent app to web component** using attributes/properties
+- ✅ **Bi-directional communication** between frameworks:
+  - Parent → Web Component (attributes/properties)
+  - Web Component → Parent (custom events)
 - ✅ Real-time data binding between frameworks
+- ✅ Handling assets (images) in web components
 
 ## Prerequisites
 
@@ -72,7 +75,9 @@ Both projects follow a similar pattern:
 2. Subdirectory containing the web component (opposite framework)
 3. Build process that compiles the web component
 4. Integration in the main app using custom element tags
-5. **Interactive demo**: Input field in main app sends messages to web component in real-time
+5. **Interactive demos**:
+   - Input field in main app sends messages to web component in real-time
+   - Button in web component sends image to main app using custom events
 
 ## Notes
 
