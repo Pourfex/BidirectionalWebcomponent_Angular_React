@@ -72,6 +72,15 @@ The application will be available at `http://localhost:3000`
 - `angular-webcomponent/src/main.ts` - Registers Angular component as web component
 - `public/index.html` - Includes the web component script
 
+## Communication Between Frameworks
+
+This template demonstrates how to pass data from the React app to the Angular web component:
+
+1. **Input Field in React**: Type a message in the input field using React state
+2. **Property Binding**: React uses a `ref` and `useEffect` to set the attribute on the web component when state changes
+3. **Web Component Receives**: Angular Elements automatically exposes `@Input()` properties as attributes
+4. **Real-time Update**: The message appears instantly in the Angular web component
+
 ## Learning Points
 
 This template demonstrates:
@@ -80,4 +89,6 @@ This template demonstrates:
 - Cross-framework integration
 - Modern web component standards
 - Angular standalone components
+- Passing data from parent to web component using attributes and refs
+- Angular @Input() decorator for web component properties
 
